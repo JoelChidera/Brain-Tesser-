@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JAMB Exam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?
+    family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="write-up">
+      <h1>JAMB EXAM</h1>
+    </div>
+    <div id="cbt-app">
+      <div id="welcome-view">
+        <h1>Welcome To Your JAMB Exam</h1>
+        <button onclick="startTest()">Start Exam</button>
+      </div>
+
+      <div id="question-view">
+        <div id="question-container">
+          <h2 id="question-text">Question Exam</h2>
+          <form id="options-form"></form>
+          <div class="options">
+            <button class="option" onclick="selectAnswer(0)">(A)</button>
+            <button class="option" onclick="selectAnswer(1)">(B)</button>
+            <button class="option" onclick="selectAnswer(2)">(C)</button>
+            <button class="option" onclick="selectAnswer(3)">(D)</button>
+          </div>
+          <button id="next-button" onclick="nextQuestion()">Preview</button>
+          <button id="preview-button" onclick="nextQuestion()">Next</button>
+        </div>
+        <div id="progress-bar"></div>
+      </div>
+
+      <div id="result-view">
+        <h1 id="result-text">Your Result</h1>
+        <button onclick="restartTest()">Restart Exam</button>
+      </div>
+    </div>
+
+    <div class="share">
+      <p>Check out our Social Media for more info:</p>
+
+      <div class="social">
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-linkedin"></i></a>
+        <a href="#"><i class="bx bxl-skype"></i></a>
+      </div>
+    </div>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
