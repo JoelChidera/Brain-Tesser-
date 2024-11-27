@@ -1,137 +1,126 @@
-const question = [
-    {question: "Who is the prime minister of USA?", 
-        option: ["Carlos Merritt", "Kaden Meyers", "Joe Biden", "Kyleigh Stanton"], 
-        answer: 2},
+const questions = [
+    { question: "Who is the prime minister of USA?", 
+      options: ["Carlos Merritt", "Kaden Meyers", "Joe Biden", "Kyleigh Stanton"], 
+      answer: 2 },
 
-    {question: "Who was the best defender in Arsenal in the year 2021?", 
-        option: ["William Saliba", "Kieran Tierney", "Martin Odegaard", "Gabriel Magalhaes"], 
-        answer: 0},
+    { question: "Who was the best defender in Arsenal in the year 2021?", 
+      options: ["William Saliba", "Kieran Tierney", "Martin Odegaard", "Gabriel Magalhaes"], 
+      answer: 0 },
 
-    {question: "What should be be added in food to make it have taste?", 
-        option: ["Seasoning", "Salt", "Pepper", "Onions"], 
-        answer: 1},
+    { question: "What should be added in food to make it have taste?", 
+      options: ["Seasoning", "Salt", "Pepper", "Onions"], 
+      answer: 1 },
 
-    {question: "What is the full meaning of AI?", 
-        option: ["Automatic Icon", "Artificial Intelligence", "Animal Intelligence", "Acquired Immune"], 
-        answer: 1},
+    { question: "What is the full meaning of AI?", 
+      options: ["Automatic Icon", "Artificial Intelligence", "Animal Intelligence", "Acquired Immune"], 
+      answer: 1 },
 
-    {question: "Which University is the highest in Nigeria?", 
-        option: ["Nnamdi Azikiwe University", "University of Ibadan", "Imo State University ", "Covenant University"], 
-        answer: 3},
+    { question: "Which University is the highest in Nigeria?", 
+      options: ["Nnamdi Azikiwe University", "University of Ibadan", "Imo State University", "Covenant University"], 
+      answer: 3 },
 
-    {question: "Who was the uncle of Esther in the Bible?", 
-        option: ["Haman", "Saul", "Mordeccai", "Absalom"], 
-        answer: 1},
+    { question: "Who was the uncle of Esther in the Bible?", 
+      options: ["Haman", "Saul", "Mordeccai", "Absalom"], 
+      answer: 2 },
 
-    {question: "what is the full meaning of LCM?", 
-        option: ["Let Computer Manufacture", "List Content Material", "Low Common Man", "Least Common Multiple"], 
-        answer: 3},
+    { question: "What is the full meaning of LCM?", 
+      options: ["Let Computer Manufacture", "List Content Material", "Low Common Man", "Least Common Multiple"], 
+      answer: 3 },
 
-    {question: "Who is the best web developer of all time?", 
-        option: ["Tim Berners-Lee", "Linus Torvalds", "Joel Ricch", "John Carmack"], 
-        answer: 0},
+    { question: "Who is the best web developer of all time?", 
+      options: ["Tim Berners-Lee", "Linus Torvalds", "Joel Ricch", "John Carmack"], 
+      answer: 0 },
 
-    {question: "Which goddess was considered the mother of pharaoh?", 
-        option: ["Duat", "Aaru", "Sphinx", "Isis"], 
-        answer: 3},
+    { question: "Which goddess was considered the mother of pharaoh?", 
+      options: ["Duat", "Aaru", "Sphinx", "Isis"], 
+      answer: 3 },
 
-    {question: "What is the washing away of the top soil?", 
-        option: ["Soil erosion", "Deforesting", "Bush burning", "Pests"], 
-        answer: 3},
+    { question: "What is the washing away of the top soil?", 
+      options: ["Soil erosion", "Deforestation", "Bush burning", "Pests"], 
+      answer: 0 },
 ];
 
 let currentQuestion = 0;
 let score = 0;
 let selectedAnswer = null;
 
-
 function startTest() {
     document.getElementById("welcome-view").style.display = "none";
     document.getElementById("question-view").style.display = "block";
-    loadQ();
+    loadQuestion();
 }
 
-function  loadQ() {
-    const questionD = questions[currentQuestion];
-    document.getElementById("question-text").innerText = questionD.question;
-    const optionF = document.getElementById("options-form");
-    optionF.innerHTML = "";
-    
-    questionD.options.forEach((option, index) => {
-        const label = document.createElement("label");
-        label.className = "option-label";
+function loadQuestion() {
+    const currentQuestionData = questions[currentQuestion];
+    document.getElementById("question-text").innerText = currentQuestionData.question;
+    const optionsContainer = document.getElementById("options-container");
+    optionsContainer.innerHTML = "";
 
-        const radioB = document.createElement("input");
-        radioB.type = "radio";
-        radioB.name = "option";
-        radioB.value = index;
-        radioB.onclick = () => selectAns(index);
-
-        label.appendChild(radioB);
-        label.append(option);
-        optionF.appendChild(label);
+    currentQuestionData.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.classList.add("option");
+        button.innerText = `${String.fromCharCode(65 + index)}) ${option}`;
+        button.onclick = () => selectAnswer(index, button);
+        optionsContainer.appendChild(button);
     });
 
-    document.getElementById("next-button").disabled = true;
-    updateProgresorBar();
+    document.getElementById("next-button").innerText = currentQuestion === questions.length - 1 ? "Submit" : "Next";
+    document.getElementById("previous-button").style.display = currentQuestion === 0 ? "none" : "inline-block";
+    document.getElementById("next-button").disabled = selectedAnswer === null;
+
+    updateProgressBar();
 }
 
-//moove to next question
-function selectAns(index) {
-    selectedAns = index;
-    document.getElementById("next-button").disabled = false;//Enable Next
-}
+function selectAnswer(index, button) {
+    const options = document.querySelectorAll('.option');
+    options.forEach(opt => opt.classList.remove('selected'));  // Remove previous selection
 
-//move to next questionn or show results
-function nextQuestion() {
-    if(selectedAns === questions[currentQuestion].answer) {
-        score++;
-    }
-}
-currentQuestions++;
-selectedAns = null;
-
-if (currentQuestion < questiond.length) {
-    loadQ();
-}else {
-    displayResult();
-    document.getElementById("next-button").onclick = submitExam;
-}
-//submit the exam and dislay result
-function submitExam(){
-    displayResult();
-    document.getElementById("next-button").disabled = true;
-}
-
-console.log(currentQuestion);
-console.log(questions.length);
-if (currentQuestion === questions.length - 1) {
-    document.getElementById("next-button").innerText = "submit";
+    button.classList.add('selected'); // Add 'selected' class to the clicked option
+    selectedAnswer = index;
     document.getElementById("next-button").disabled = false;
 }
 
-//update progress bar
+function nextQuestion() {
+    if (selectedAnswer !== null) {
+        if (selectedAnswer === questions[currentQuestion].answer) {
+            score++;
+        }
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+        selectedAnswer = null;
+        loadQuestion();
+    } else {
+        submitExam();
+    }
+}
+
+function previousQuestion() {
+    currentQuestion--;
+    selectedAnswer = null;
+    loadQuestion();
+}
+
+function submitExam() {
+    document.getElementById("question-view").style.display = "none";
+    document.getElementById("result-view").style.display = "block";
+
+    const resultMessage = score >= 6 ? "Congratulations! You passed the exam." : "You failed. Try again!";
+    document.getElementById("result-text").innerText = `Your score: ${score} / 10\n${resultMessage}`;
+}
+
 function updateProgressBar() {
     const progress = ((currentQuestion + 1) / questions.length) * 100;
     document.getElementById("progress-bar-fill").style.width = `${progress}%`;
 }
 
-//Display results
-function displayResult(){
-    document.getElementById("question-view").style.display = "none";
-    document.getElementById("result-view").style.display = "block";
-
-    const resultMessage = score >= 5
-    ? "Bright student! Great job and keep it up!"
-    : "poor result. Study harder and try again";
-    document.getElementById("result-text").innerText = `Score: ${score}/10 - ${resultMessage}`;
-}
-
-//Restart exam
-function restartExam(){
-    const restart = ((currentQuestion - 1) / questions.length) * 100;
+function restartTest() {
+    currentQuestion = 0;
+    score = 0;
     document.getElementById("result-view").style.display = "none";
-    document.getElementById("result-text").style.display = "block";
+    document.getElementById("welcome-view").style.display = "block";
 }
 
 
@@ -145,3 +134,11 @@ function restartExam(){
 
 
 
+
+
+
+// fromCharCode() is used to create characters from their Unicode values.
+//fromCharCode() works with Unicode code points that fit within the range of 0 to 65535. For code points beyond 65535, the method cannot handle them (those are in the supplementary planes of Unicode).
+///For dealing with full Unicode code points, especially those beyond 65535, you may need to use String.fromCodePoint() instead, which can handle larger code points.
+//The fromCharCode() method in JavaScript is a method used to convert Unicode values (or character codes) into characters. 
+//It takes one or more integers, each representing a Unicode code point, and returns a string that corresponds to those code points.
