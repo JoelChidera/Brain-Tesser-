@@ -1,14 +1,14 @@
 const questions = [
-    { question: "Who is the prime minister of USA?", 
-      options: ["Carlos Merritt", "Kaden Meyers", "Joe Biden", "Kyleigh Stanton"], 
+    { question: "Who is the current president of USA?", 
+      options: ["Joe Biden", "Kaden Meyers", "Donald Trump", "Kyleigh Stanton"], 
       answer: 2 },
 
     { question: "Who was the best defender in Arsenal in the year 2021?", 
       options: ["William Saliba", "Kieran Tierney", "Martin Odegaard", "Gabriel Magalhaes"], 
       answer: 0 },
 
-    { question: "What should be added in food to make it have taste?", 
-      options: ["Seasoning", "Salt", "Pepper", "Onions"], 
+    { question: "Which company brings out the best programmers in Enugu state?", 
+      options: ["Sunset Network Limited", "Verbum Network Limited", "Life Line Limited", "Axiom Limited"], 
       answer: 1 },
 
     { question: "What is the full meaning of AI?", 
@@ -24,7 +24,7 @@ const questions = [
       answer: 2 },
 
     { question: "What is the full meaning of LCM?", 
-      options: ["Let Computer Manufacture", "List Content Material", "Low Common Man", "Least Common Multiple"], 
+      options: ["Let Computer Manufacture", "List Content Material", "Low Common Man", "Lowest Common Multiple"], 
       answer: 3 },
 
     { question: "Who is the best web developer of all time?", 
@@ -35,8 +35,8 @@ const questions = [
       options: ["Duat", "Aaru", "Sphinx", "Isis"], 
       answer: 3 },
 
-    { question: "What is the washing away of the top soil?", 
-      options: ["Soil erosion", "Deforestation", "Bush burning", "Pests"], 
+    { question: "What has weight and occupies space?", 
+      options: ["Matter", "Planet", "Meta-verse", "Astriod"], 
       answer: 0 },
 ];
 
@@ -107,7 +107,7 @@ function submitExam() {
     document.getElementById("question-view").style.display = "none";
     document.getElementById("result-view").style.display = "block";
 
-    const resultMessage = score >= 6 ? "Congratulations! You passed the exam." : "You failed. Try again!";
+    const resultMessage = score >= 6 ? "Congratulations! You passed the test." : "You failed the test. Try again!";
     document.getElementById("result-text").innerText = `Your score: ${score} / 10\n${resultMessage}`;
 }
 
@@ -122,6 +122,17 @@ function restartTest() {
     document.getElementById("result-view").style.display = "none";
     document.getElementById("welcome-view").style.display = "block";
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JAMB Exam</title>
+    <title>Brain Test</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="icon" href="./image/favicon-32x32.png">   
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
@@ -15,35 +16,14 @@
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <style>
-      .option {
-        padding: 10px;
-        margin: 5px;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-      }
-      .option:hover {
-        background-color: #f0f0f0;
-      }
-      .selected {
-        background-color: purple;
-        color: white;
-      }
-      #next-button:disabled {
-        background-color: gray;
-        cursor: not-allowed;
-      }
-    </style>
   </head>
   <body>
     <div class="write-up">
-      <h1>JAMB Exam</h1>
+      <h1>BRAIN <span>TEST</span></h1>
     </div>
     <div id="cbt-app">
       <div id="welcome-view">
-        <h1>Welcome To Your JAMB Exam</h1>
+        <h1>Try These <span>Brain</span> Teasers!</h1>
         <button onclick="startTest()">Start Exam</button>
       </div>
 
@@ -64,7 +44,9 @@
         <button onclick="restartTest()">Restart Exam</button>
       </div>
     </div>
-
+    <div class="footer__bar">
+      Copyright &copy; 2024 Joel Ricch Dev Mastery. All rights reserved.
+  </div>
     <script src="script.js"></script>
   </body>
 </html>
